@@ -1,0 +1,94 @@
+[
+  {
+    "question": "Come si accende MARRtino?",
+    "answer": "Premere il pulsante rosso dietro la testa finché non si illumina il LED frontale."
+  },
+  {
+    "question": "Come si spegne MARRtino?",
+    "answer": "Tieni premuto il tasto di accensione per circa 3 secondi fino allo spegnimento completo dei LED."
+  },
+  {
+    "question": "MARRtino può essere utilizzato senza connessione a Internet?",
+    "answer": "Sì, molte funzionalità base, come il movimento e Blockly, funzionano anche offline."
+  },
+  {
+    "question": "Come collego MARRtino al Wi-Fi?",
+    "answer": "Usa l'app MARRtino Connect e inserisci le credenziali della rete Wi-Fi."
+  },
+  {
+    "question": "Posso controllare MARRtino da un tablet?",
+    "answer": "Sì, tramite l’interfaccia web accessibile da browser o app compatibili."
+  },
+  {
+    "question": "È possibile collegare MARRtino via Bluetooth?",
+    "answer": "Sì, può essere configurato per comunicare con dispositivi compatibili via Bluetooth."
+  },
+  {
+    "question": "In quali attività didattiche è utilizzabile MARRtino?",
+    "answer": "Per coding, robotica educativa, giochi di logica, percorsi e interazione vocale."
+  },
+  {
+    "question": "A partire da che età si può usare MARRtino?",
+    "answer": "Dai 6 anni in su, fino a studenti universitari."
+  },
+  {
+    "question": "MARRtino può essere programmato da bambini senza esperienza?",
+    "answer": "Sì, con Blockly anche i principianti possono creare programmi a blocchi."
+  },
+  {
+    "question": "Quali linguaggi di programmazione supporta MARRtino?",
+    "answer": "Blockly, Python, C++, e integrazione con ROS."
+  },
+  {
+    "question": "Cos'è ROS e perché è usato con MARRtino?",
+    "answer": "È un framework per la robotica che permette di creare sistemi modulari."
+  },
+  {
+    "question": "Posso usare Blockly per controllare MARRtino?",
+    "answer": "Sì, Blockly è l’ambiente consigliato per la programmazione visuale."
+  },
+  {
+    "question": "Quali sensori ha MARRtino?",
+    "answer": "Sensori IR, ultrasuoni, line-follower, e in alcune versioni anche fotocamera."
+  },
+  {
+    "question": "MARRtino può evitare gli ostacoli?",
+    "answer": "Sì, grazie ai sensori a ultrasuoni e software di navigazione."
+  },
+  {
+    "question": "Quali schede elettroniche sono usate in MARRtino?",
+    "answer": "Arduino Mega combinato con Raspberry Pi per gestire hardware e software."
+  },
+  {
+    "question": "MARRtino può seguire linee sul pavimento?",
+    "answer": "Sì, con il modulo line-follower attivo."
+  },
+  {
+    "question": "MARRtino può parlare?",
+    "answer": "Sì, riproduce frasi preimpostate o usa sistemi di sintesi vocale."
+  },
+  {
+    "question": "MARRtino capisce i comandi vocali?",
+    "answer": "Sì, nelle versioni con riconoscimento vocale attivo."
+  },
+  {
+    "question": "Serve Internet per i comandi vocali?",
+    "answer": "No, se il pacchetto vocale offline è installato."
+  },
+  {
+    "question": "Posso stampare i pezzi di MARRtino con una stampante 3D?",
+    "answer": "Sì, i file STL sono disponibili online."
+  },
+  {
+    "question": "Dove trovo progetti ed esempi per MARRtino?",
+    "answer": "Su www.marrtino.org e social.marrtino.org."
+  },
+  {
+    "question": "Come aggiorno il software di MARRtino?",
+    "answer": "Collegalo al PC e usa MARRtino Manager o terminale ROS."
+  },
+  {
+    "question": "A chi mi rivolgo in caso di problemi tecnici?",
+    "answer": "Contatta il supporto via email o tramite il sito ufficiale."
+  }
+]
