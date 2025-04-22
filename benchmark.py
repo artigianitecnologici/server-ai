@@ -5,6 +5,8 @@ import socket
 import csv
 import subprocess
 import matplotlib.pyplot as plt
+
+import cpuinfo  
 from ollama import Client
 
 PROMPT = "Spiegami la fotosintesi clorofilliana in modo semplice."
@@ -33,10 +35,33 @@ def get_gpu_info():
             pass
         return "Nessuna GPU rilevata"
 
+
+def extract_cpu_type(cpu_brand):
+    # Cerca tipo i5, i7, i9 o Ryzen
+    if "Intel" in cpu_brand:
+        for part in cpu_brand.split():
+            if part.startswith("i3") or part.startswith("i5") or part.startswith("i7") or part.startswith("i9"):
+                return part
+    elif "Ryzen" in cpu_brand:
+        parts = cpu_brand.split()
+        for i, part in enumerate(parts):
+            if "Ryzen" in part and i + 1 < len(parts):
+                return part + " " + parts[i + 1]
+    return "N/D"
+
 def get_system_info():
+    cpu_freq = psutil.cpu_freq()
+    cpu_info = cpuinfo.get_cpu_info()
+    cpu_brand = cpu_info.get("brand_raw", "N/D")
+    cpu_type = extract_cpu_type(cpu_brand)
+
     return {
         "host": socket.gethostname(),
-        "cpu": platform.processor(),
+        "cpu_brand": cpu_brand,
+        "cpu_type": cpu_type,
+        "cpu_freq_base_mhz": round(cpu_freq.min, 2) if cpu_freq else "N/D",
+        "cpu_freq_max_mhz": round(cpu_freq.max, 2) if cpu_freq else "N/D",
+        "cpu_freq_current_mhz": round(cpu_freq.current, 2) if cpu_freq else "N/D",
         "cores": psutil.cpu_count(logical=False),
         "threads": psutil.cpu_count(logical=True),
         "ram_total_gb": round(format_gb(psutil.virtual_memory().total), 2),
@@ -44,6 +69,8 @@ def get_system_info():
         "architecture": platform.machine(),
         "gpu": get_gpu_info()
     }
+
+
 
 def get_installed_models():
     try:

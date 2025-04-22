@@ -10,7 +10,8 @@ import sys
 import requests
 
 # Imposta il path principale
-PATH = os.path.expandvars("$HOME/src/marrtinorobot2/marrtinorobot2_chatbot/")
+#PATH = os.path.expandvars("$HOME/src/marrtinorobot2/marrtinorobot2_chatbot/")
+PATH = os.path.expandvars("$HOME/server-ai/")
 LOG_PATH = os.path.join(PATH, "log")
 os.makedirs(LOG_PATH, exist_ok=True)
 

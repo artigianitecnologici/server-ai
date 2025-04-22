@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestione Modelli</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    h1 { color: #333; }
+    .model { margin: 10px 0; }
+    .active { font-weight: bold; color: green; }
+    button { padding: 5px 10px; margin-left: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Modelli disponibili:</h1>
+  <p>Modello attivo: <span class="active">{{ current_model }}</span></p>
+  <ul>
+    {% for model in models %}
+      <li class="model">
+        {{ model }}
+        {% if model == current_model %}
+          <span class="active">(attivo)</span>
+        {% else %}
+          <button onclick="selectModel('{{ model }}')">Seleziona</button>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+
+  <script>
+    function selectModel(modelName) {
+      fetch(`/selectmodel?model=${modelName}`)
+        .then(response => response.text())
+        .then(data => {
+          alert(data);
+          location.reload();
+        });
+    }
+  </script>
+</body>
+</html>

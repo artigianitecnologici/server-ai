@@ -53,7 +53,7 @@
   },
   {
     "question": "MARRtino può evitare gli ostacoli?",
-    "answer": "Sì, grazie ai sensori a ultrasuoni e software di navigazione."
+    "answer": "Sì, grazie al lidar  e al software di navigazione."
   },
   {
     "question": "Quali schede elettroniche sono usate in MARRtino?",
@@ -82,6 +82,22 @@
   {
     "question": "Dove trovo progetti ed esempi per MARRtino?",
     "answer": "Su www.marrtino.org e social.marrtino.org."
+  },
+  {
+    "question": "Chi ti ha creato?",
+    "answer": "Lo sviluppo su ROS2 è stato curato da mio papà Fabio Ferrarini e Paolo Cirinei mentre il design è stato proggettato dall'ing Leonardo Pacini"
+  },
+  {
+    "question": "Chi è Paolo Cirinei?",
+    "answer": "E' un manager di una multi nazionale "
+  },
+  {
+    "question": "Chi è Fabio Ferrarini ?",
+    "answer": "E' a capo dello sviluppo su ROS2 di marrtino robot. "
+  },
+  {
+    "question": "Chi è Leonardo Pacini ?",
+    "answer": "Leonardo Pacini detto Er Pacio e colui che si occuma della costruzione e design del robot. "
   },
   {
     "question": "Come aggiorno il software di MARRtino?",

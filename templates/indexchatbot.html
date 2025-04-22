@@ -38,7 +38,6 @@
           <option value="{{ model }}" {% if model == 'llama3:latest' %}selected{% endif %}>{{ model }}</option>
         {% endfor %}
       </select>
-      
       <button type="submit" class="msger-send-btn">Send</button>
     </form>
 
@@ -70,6 +69,15 @@
       botResponse(msgText, selectedModel);
     });
 
+    // Cambia il modello sul server quando l'utente lo seleziona
+    modelSelect.addEventListener("change", () => {
+      const selectedModel = modelSelect.value;
+      $.get("/getmodel", { model: selectedModel }).done(function (data) {
+        console.log("Modello aggiornato:", data);
+        appendMessage(BOT_NAME, BOT_IMG, "left", "Modello aggiornato: " + selectedModel);
+      });
+    });
+
     function appendMessage(name, img, side, text) {
       const msgHTML = `
 <div class="msg ${side}-msg">
@@ -87,7 +95,7 @@
     }
 
     function botResponse(rawText, modelName) {
-      $.get("/get", { msg: rawText, model: modelName }).done(function (data) {
+      $.get("/get", { msg: rawText }).done(function (data) {
         appendMessage(BOT_NAME, BOT_IMG, "left", data);
       });
     }

@@ -12,3 +12,4 @@ soundfile
 wavio
 pyspellchecker
 ollama
+pandas

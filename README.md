@@ -29,7 +29,9 @@ ollama
 pip install vosk sounddevice requests
 sudo apt install python3-dev portaudio19-dev libportaudio2 libportaudiocpp0 ffmpeg libavdevice-dev
 
-pip install psutil matplotlib
+pip install psutil matplotlib 
+pip install py-cpuinfo
+
 # for testing
 http://x.x.x.x:5000/
 http://x.x.x.x:5000/queryexample?query=ciao

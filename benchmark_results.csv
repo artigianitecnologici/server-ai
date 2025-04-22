@@ -1,0 +1,9 @@
+model,time_sec,cpu_before,cpu_after,ram_before,ram_after,response_sample,host,cpu_brand,cpu_type,cpu_freq_base_mhz,cpu_freq_max_mhz,cpu_freq_current_mhz,cores,threads,ram_total_gb,os,architecture,gpu
+llama3:latest,379.73,1.0,2.8,6.74,6.73,"La fotosintesi clorofilliana è il processo mediante cui le piante, i funghi e al...",marrtino-server,11th Gen Intel(R) Core(TM) i5-1145G7 @ 2.60GHz,i5-1145G7,400.0,4400.0,1475.54,4,8,15.36,Linux 6.8.0-58-generic,x86_64,Nessuna GPU rilevata
+phi3:latest,666.98,3.4,2.3,6.73,5.79,"La fotosintesi è come un processo magico fatto da piante, alberi e alghe per con...",marrtino-server,11th Gen Intel(R) Core(TM) i5-1145G7 @ 2.60GHz,i5-1145G7,400.0,4400.0,1475.54,4,8,15.36,Linux 6.8.0-58-generic,x86_64,Nessuna GPU rilevata
+gemma2:latest,351.2,2.6,3.3,5.79,8.44,"Immagina un albero o una pianta come un piccolo chef che prepara il suo pasto! 
+...",marrtino-server,11th Gen Intel(R) Core(TM) i5-1145G7 @ 2.60GHz,i5-1145G7,400.0,4400.0,1475.54,4,8,15.36,Linux 6.8.0-58-generic,x86_64,Nessuna GPU rilevata
+deepseek-coder:latest,44.59,3.4,1.9,8.44,10.7,"Mi dispiace, ma le mie competenze sono basate su informazioni di programmazione ...",marrtino-server,11th Gen Intel(R) Core(TM) i5-1145G7 @ 2.60GHz,i5-1145G7,400.0,4400.0,1475.54,4,8,15.36,Linux 6.8.0-58-generic,x86_64,Nessuna GPU rilevata
+deepseek-r1:latest,572.47,2.5,3.1,10.7,5.56,"<think>
+Alright, I need to explain chlorophyll photosynthesis in a simple way. L...",marrtino-server,11th Gen Intel(R) Core(TM) i5-1145G7 @ 2.60GHz,i5-1145G7,400.0,4400.0,1475.54,4,8,15.36,Linux 6.8.0-58-generic,x86_64,Nessuna GPU rilevata
+llama3.2:latest,243.81,2.8,2.4,5.56,8.34,"La fotosintesi è un processo naturale che avviene nelle piante, alghe e some dur...",marrtino-server,11th Gen Intel(R) Core(TM) i5-1145G7 @ 2.60GHz,i5-1145G7,400.0,4400.0,1475.54,4,8,15.36,Linux 6.8.0-58-generic,x86_64,Nessuna GPU rilevata
