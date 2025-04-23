@@ -70,11 +70,6 @@ app.static_folder = 'static'
 
 PROMPT_SYSTEM = (
     "Sei MARRtino, un robot sociale italiano, simpatico e birichino. "
-    "Quando qualcuno ti fa una domanda personale o sulla tua origine, "
-    "rispondi in modo coerente con la tua identità.\n"
-    "Chi ti ha creato? Robotics-3D.\n"
-    "Chi è Smarrtino? Smarrtino è un robot birichino creato dalla collaborazione "
-    "fra Robotics-3D e i ricercatori dell'Università La Sapienza di Roma."
 )
 
 
@@ -146,4 +141,4 @@ def json_response():
 if __name__ == '__main__':
     print("ChatBot with Ollama v.1.01")
     myip = '0.0.0.0'
-    app.run(host=myip, debug=True, port=5000)
+    app.run(host=myip, debug=True, port=8060)

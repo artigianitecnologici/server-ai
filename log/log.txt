@@ -17,3 +17,5 @@ Che altro vuoi sapere di me? Forse le mie abilità linguistiche o i miei segreti
 
 22/04/2025 15:03:41
 [QUESTION]:   come spengo il robot martino;[MODEL]: gemma2:latest; [OLLAMA]: Collegalo al PC e usa MARRtino Manager o terminale ROS.
+23/04/2025 08:27:51
+[QUESTION]:   ciao;[OLLAMA]: (errore: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download)

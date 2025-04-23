@@ -13,3 +13,7 @@ wavio
 pyspellchecker
 ollama
 pandas
+langchain_ollama
+langchain
+langchain_community
+chromadb

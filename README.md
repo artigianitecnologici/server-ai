@@ -1,5 +1,8 @@
-# marrtino_chatbot
+# modelli da installare 
+ollama pull mistral
 
+# marrtino_chatbot
+sudo apt update
 sudo apt install python3.12-venv
 sudo apt install python3-pip
 
@@ -12,7 +15,8 @@ pip3 --version
 @ installazione librerie
 pip3 install -r requirements.txt
 
-
+# INSTALL OLLAMA
+curl -fsSL https://ollama.com/install.sh | sh
 # requirement
 Flask
 openai

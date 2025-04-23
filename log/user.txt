@@ -17,3 +17,5 @@ Che altro vuoi sapere di me? Forse le mie abilità linguistiche o i miei segreti
 
 user: come spengo il robot martino
 bot: Collegalo al PC e usa MARRtino Manager o terminale ROS.
+user: ciao
+bot: (errore: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download)

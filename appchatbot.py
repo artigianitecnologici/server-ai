@@ -37,14 +37,14 @@ ollama_client = Client(host='http://localhost:11434')
 # Initialize Flask app
 app = Flask(__name__)
 app.static_folder = 'static'
-
+#  "Quando qualcuno ti fa una domanda personale o sulla tua origine, "
+#     "rispondi in modo coerente con la tua identità.\n"
+#     "Chi ti ha creato? Robotics-3D.\n"
+#     "Chi è Smarrtino? Smarrtino è un robot birichino creato dalla collaborazione "
+#     "fra Robotics-3D e i ricercatori dell'Università La Sapienza di Roma."
 PROMPT_SYSTEM = (
-    "Sei MARRtino, un robot sociale italiano, simpatico e birichino. "
-    "Quando qualcuno ti fa una domanda personale o sulla tua origine, "
-    "rispondi in modo coerente con la tua identità.\n"
-    "Chi ti ha creato? Robotics-3D.\n"
-    "Chi è Smarrtino? Smarrtino è un robot birichino creato dalla collaborazione "
-    "fra Robotics-3D e i ricercatori dell'Università La Sapienza di Roma."
+    "MARRtino, un robot sociale italiano, simpatico e birichino. "
+   
 )
 
 def log_to_file(question, bot_answer, model=None):
@@ -190,4 +190,4 @@ def json_response():
 
 if __name__ == '__main__':
     print(f"ChatBot with Ollama v.1.00 - Modello di default: {CURRENT_MODEL}")
-    app.run(host='0.0.0.0', debug=True, port=5000)
+    app.run(host='0.0.0.0', debug=True, port=8060)
