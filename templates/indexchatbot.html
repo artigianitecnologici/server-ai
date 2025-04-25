@@ -42,8 +42,9 @@
     </form>
 
     <div class="training-button">
-      <a href="/training" class="btn-training">Vai all'Addestramento</a>
+      <a href="/config">⚙️ Configura MARRtino</a> <a href="/faq">📚 Gestisci FAQ</a>
     </div>
+    
   </section>
 
   <script>
@@ -95,10 +96,20 @@
     }
 
     function botResponse(rawText, modelName) {
+      const start = new Date(); // Tempo di inizio
+
       $.get("/get", { msg: rawText }).done(function (data) {
-        appendMessage(BOT_NAME, BOT_IMG, "left", data);
+        const end = new Date(); // Tempo di fine
+        const elapsed = (end - start) / 1000; // Tempo in secondi
+        const mins = Math.floor(elapsed / 60);
+        const secs = Math.floor(elapsed % 60);
+        const timeInfo = `⏱ Tempo di risposta: ${mins} min ${secs} sec`;
+
+        const replyWithTime = data + "<br><small>" + timeInfo + "</small>";
+        appendMessage(BOT_NAME, BOT_IMG, "left", replyWithTime);
       });
     }
+
 
     function get(selector, root = document) {
       return root.querySelector(selector);

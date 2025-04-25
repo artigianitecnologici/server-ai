@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Configurazione MARRtino</title>
+</head>
+<body>
+    <h1>Configurazione MARRtino</h1>
+    {% if message %}
+        <p style="color: green;">{{ message }}</p>
+    {% endif %}
+    <form method="POST">
+        <label for="default_model">Modello Attivo:</label><br>
+        <input type="text" id="default_model" name="default_model" value="{{ config.default_model }}"><br><br>
+
+        <label for="prompt_system">Prompt di Sistema:</label><br>
+        <textarea id="prompt_system" name="prompt_system" rows="6" cols="50">{{ config.prompt_system }}</textarea><br><br>
+
+        <input type="submit" value="Salva Configurazione">
+    </form>
+
+    <br><a href="/">Torna alla Home</a>
+</body>
+</html>

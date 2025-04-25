@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestione FAQ - MARRtino</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+</head>
+<body>
+  <section class="msger">
+    <header class="msger-header">
+      <div class="msger-header-title">
+        📚 Gestione FAQ di MARRtino 🤖
+      </div>
+    </header>
+
+    <main class="msger-chat" style="overflow-y: auto; max-height: 70vh;">
+      {% if message %}
+        <div class="msg left-msg">
+          <div class="msg-img" style="background-image: url('{{ url_for('static', filename='robot.png') }}')"></div>
+          <div class="msg-bubble">
+            <div class="msg-info">
+              <div class="msg-info-name">Sistema</div>
+              <div class="msg-info-time">{{ message }}</div>
+            </div>
+            <div class="msg-text">
+              FAQ aggiornata con successo!
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      {% for faq in faqs %}
+        <div class="msg left-msg">
+          <div class="msg-img" style="background-image: url('{{ url_for('static', filename='robot.png') }}')"></div>
+          <div class="msg-bubble">
+            <div class="msg-info">
+              <div class="msg-info-name">FAQ {{ loop.index }}</div>
+              <div class="msg-info-time">{{ loop.index0 }}</div>
+            </div>
+            <div class="msg-text">
+              <strong>Q:</strong> {{ faq.question }}<br>
+              <strong>R:</strong> {{ faq.answer }}
+              <form method="POST" style="margin-top:10px;">
+                <input type="hidden" name="index" value="{{ loop.index0 }}">
+                <input type="hidden" name="action" value="delete">
+                <button type="submit" class="msger-send-btn">❌ Elimina</button>
+              </form>
+              <form method="POST" style="margin-top:5px;">
+                <input type="hidden" name="index" value="{{ loop.index0 }}">
+                <input type="hidden" name="action" value="edit">
+                <input type="text" name="question" value="{{ faq.question }}" style="width: 90%; margin-top:5px;"><br>
+                <input type="text" name="answer" value="{{ faq.answer }}" style="width: 90%; margin-top:5px;"><br>
+                <button type="submit" class="msger-send-btn">💾 Salva Modifica</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </main>
+
+    <form method="POST" class="msger-inputarea" style="flex-direction: column; padding: 20px;">
+      <h3>Aggiungi Nuova FAQ</h3>
+      <input type="hidden" name="action" value="add">
+      <input type="text" name="question" placeholder="Domanda" class="msger-input" style="margin-bottom: 10px;">
+      <input type="text" name="answer" placeholder="Risposta" class="msger-input" style="margin-bottom: 10px;">
+      <button type="submit" class="msger-send-btn">➕ Aggiungi FAQ</button>
+    </form>
+
+    <div class="training-button">
+      <a href="/">🏠 Torna alla Home</a> <a href="/config">⚙️ Configura MARRtino</a>
+    </div>
+  </section>
+</body>
+</html>
