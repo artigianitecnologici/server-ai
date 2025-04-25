@@ -16,7 +16,9 @@ LOG_PATH = os.path.join(PATH, "log")
 os.makedirs(LOG_PATH, exist_ok=True)
 
 # Variabile globale per tenere il modello corrente
-CURRENT_MODEL = "llama3:latest"
+CURRENT_MODEL = "gemma:2b"
+#CURRENT_MODEL = "gemma3:12b-it-qat"
+#CURRENT_MODEL = "llama3:latest"
 
 # Load FAQ dataset from the JSON file
 json_path = os.path.join("data", "faq_marrtino_en_keys.json")
@@ -37,13 +39,14 @@ ollama_client = Client(host='http://localhost:11434')
 # Initialize Flask app
 app = Flask(__name__)
 app.static_folder = 'static'
-#  "Quando qualcuno ti fa una domanda personale o sulla tua origine, "
+#   "Quando qualcuno ti fa una domanda personale o sulla tua origine, "
 #     "rispondi in modo coerente con la tua identità.\n"
 #     "Chi ti ha creato? Robotics-3D.\n"
 #     "Chi è Smarrtino? Smarrtino è un robot birichino creato dalla collaborazione "
 #     "fra Robotics-3D e i ricercatori dell'Università La Sapienza di Roma."
 PROMPT_SYSTEM = (
-    "MARRtino, un robot sociale italiano, simpatico e birichino. "
+    "Rispondi sempre in italiano ti chiami Martino Robot"
+  
    
 )
 
@@ -69,7 +72,12 @@ def split_string(msg):
     if len(amsg) >= 2:
         return amsg[0] + '. ' + amsg[1]
     return amsg[0]
-
+# ,
+#             options={
+#                 "temperature": 0.5,
+#                 "top_p": 0.8,
+#                 "max_tokens": 200
+#             }
 def get_response(messages: list, model_name):
     print(f"[DEBUG] Messages sent to model: {messages}", file=sys.stderr)
     try:
@@ -86,6 +94,7 @@ def get_response(messages: list, model_name):
         print(f"[DEBUG] Ollama error: {e}", file=sys.stderr)
         return {"content": f"(error: {str(e)})"}
 
+
 def get_ollama_models():
     try:
         models_data = ollama_client.list()
@@ -101,6 +110,15 @@ def get_ollama_models():
     except Exception as e:
         print(f"[DEBUG] Errore nel recupero modelli Ollama: {e}", file=sys.stderr)
         return ["llama3:latest"]
+    
+def send_to_ros2(text, url="http://192.168.1.6:5001/send"):
+    try:
+        params = {"text": text}
+        requests.get(url, params=params)
+        print(f"[DEBUG] ✅ Inviato al nodo ROS: {text}", file=sys.stderr)
+    except Exception as e:
+        print(f"[DEBUG] ❌ Errore nell'invio al nodo ROS: {e}", file=sys.stderr)
+
 
 @app.route("/")
 def home():
@@ -169,6 +187,7 @@ def bot():
     new_message = get_response(messages, model_name=model)
     msgout = split_string(new_message['content'])
     log_to_file(myquery, msgout, model=model)
+    send_to_ros2(msgout)
     return msgout
 
 @app.route('/json')
