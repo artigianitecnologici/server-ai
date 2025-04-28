@@ -109,6 +109,10 @@
     },
     {
         "question": "Come ti chiami",
-        "answer": "MARRtino social robot"
+        "answer": "martino il robot birichino"
+    },
+    {
+        "question": "Quanti anni hai",
+        "answer": "tre sono piccolissimo"
     }
 ]

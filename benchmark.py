@@ -2,16 +2,43 @@ import time
 import psutil
 import platform
 import socket
-import csv
 import subprocess
-import matplotlib.pyplot as plt
-
+import pandas as pd
 import cpuinfo  
 from ollama import Client
+import concurrent.futures
 
-PROMPT = "Spiegami la fotosintesi clorofilliana in modo semplice."
-CSV_FILENAME = "benchmark_results.csv"
-PLOT_FILENAME = "benchmark_plot.png"
+# File di log
+LOG_FILENAME = "benchmark.txt"
+
+# Funzione per stampare e salvare log
+def log_print(message):
+    print(message)
+    with open(LOG_FILENAME, "a", encoding="utf-8") as log_file:
+        log_file.write(message + "\n")
+
+# Conversazioni: più domande per ogni mini-dialogo
+CONVERSATIONS = [
+    [
+        "Ciao! Sai contare da uno a dieci?",
+        "Bravissimo! E qual è la capitale d'Italia?",
+        "Puoi spiegarmi cos'è una stella?"
+    ],
+    [
+        "Ciao! Cos'è il Sole?",
+        "Perché la luna ci segue?",
+        "Quanti pianeti ci sono?"
+    ],
+    [
+        "Ciao! Perché il cielo è blu?",
+        "Come nascono i pesci?",
+        "Perché le foglie cadono?"
+    ]
+]
+
+EXCEL_FILENAME = "benchmark_results.xlsx"
+SUMMARY_FILENAME = "benchmark_summary.xlsx"
+TIMEOUT_SEC = 30  # Timeout per risposta modello
 
 client = Client()
 
@@ -27,7 +54,6 @@ def get_gpu_info():
         gpu_name = output.decode().strip()
         return gpu_name if gpu_name else "GPU NVIDIA non rilevata"
     except Exception:
-        # macOS Apple Silicon
         try:
             if platform.system() == "Darwin" and platform.machine() == "arm64":
                 return "Apple Silicon GPU (Metal)"
@@ -35,12 +61,10 @@ def get_gpu_info():
             pass
         return "Nessuna GPU rilevata"
 
-
 def extract_cpu_type(cpu_brand):
-    # Cerca tipo i5, i7, i9 o Ryzen
     if "Intel" in cpu_brand:
         for part in cpu_brand.split():
-            if part.startswith("i3") or part.startswith("i5") or part.startswith("i7") or part.startswith("i9"):
+            if part.startswith(("i3", "i5", "i7", "i9")):
                 return part
     elif "Ryzen" in cpu_brand:
         parts = cpu_brand.split()
@@ -70,137 +94,135 @@ def get_system_info():
         "gpu": get_gpu_info()
     }
 
-
-
 def get_installed_models():
     try:
         models_data = client.list()
-        models = []
-        for m in models_data.get("models", []):
-            model_name = m.get("model") or m.get("name")
-            if model_name:
-                models.append(model_name)
-        return models
+        return [m.get("model") or m.get("name") for m in models_data.get("models", []) if m.get("model") or m.get("name")]
     except Exception as e:
-        print(f"❌ Errore nel recupero dei modelli: {e}")
+        log_print(f"❌ Errore nel recupero dei modelli: {e}")
         return []
 
-def benchmark_model(model_name):
-    print(f"\n📌 TEST: {model_name}")
+def ask_single_question(model_name, question, history, timeout_sec=TIMEOUT_SEC):
+    log_print(f"➡️ Domanda: {question}")
+
+    messages = [{"role": "system", "content": "Parla con un bambino di 6-10 anni. Sii gentile, semplice e chiaro."}]
+    messages.extend(history)
+    messages.append({"role": "user", "content": question})
+
     try:
         cpu_before = psutil.cpu_percent(interval=1)
         ram_before = psutil.virtual_memory().used
-
         start_time = time.time()
-        response = client.chat(model=model_name, messages=[
-            {"role": "user", "content": PROMPT}
-        ])
-        end_time = time.time()
 
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            future = executor.submit(client.chat, model=model_name, messages=messages)
+            response = future.result(timeout=timeout_sec)
+
+        end_time = time.time()
         cpu_after = psutil.cpu_percent(interval=1)
         ram_after = psutil.virtual_memory().used
 
         result = {
             "model": model_name,
+            "question": question,
             "time_sec": round(end_time - start_time, 2),
             "cpu_before": cpu_before,
             "cpu_after": cpu_after,
             "ram_before": round(format_gb(ram_before), 2),
             "ram_after": round(format_gb(ram_after), 2),
-            "response_sample": response["message"]["content"][:80] + "..."
+            "response": response["message"]["content"]
         }
 
-        return result
+        log_print(f"✅ {model_name} | Tempo: {result['time_sec']} sec")
+        log_print(f"💬 Risposta: {response['message']['content'][:150]}...\n")
+        return result, {"role": "assistant", "content": response["message"]["content"]}
 
-    except Exception as e:
+    except concurrent.futures.TimeoutError:
+        log_print(f"⏱️ Timeout su: {question}")
         return {
             "model": model_name,
+            "question": question,
+            "error": f"Timeout dopo {timeout_sec} secondi"
+        }, None
+    except Exception as e:
+        log_print(f"❌ Errore: {model_name} | {question} → {str(e)}")
+        return {
+            "model": model_name,
+            "question": question,
             "error": str(e)
-        }
+        }, None
 
-def save_to_csv(results, system_info, filename=CSV_FILENAME):
-    keys = list(results[0].keys()) + list(system_info.keys())
-    with open(filename, "w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=keys)
-        writer.writeheader()
-        for r in results:
-            r.update(system_info)
-            writer.writerow(r)
+def save_to_excel(results, system_info, filename=EXCEL_FILENAME):
+    df = pd.DataFrame(results)
+    for key, value in system_info.items():
+        df[key] = value
+    df.to_excel(filename, index=False)
+    log_print(f"\n📁 Risultati salvati in {filename}")
 
-    print(f"\n📁 Risultati salvati in {filename}")
+def save_summary_to_excel(results, filename=SUMMARY_FILENAME):
+    models = list(set(r["model"] for r in results))
+    questions = list(set(r["question"] for r in results))
 
-def plot_results(results, system_info):
-    filtered = [r for r in results if "error" not in r]
+    models.sort()
+    questions.sort()
 
-    models = [r["model"] for r in filtered]
-    times = [r["time_sec"] for r in filtered]
-    cpu_after = [r["cpu_after"] for r in filtered]
-    ram_used = [r["ram_after"] - r["ram_before"] for r in filtered]
+    summary_data = []
+    for model in models:
+        row = {"Modello": model}
+        for question in questions:
+            match = next((r for r in results if r["model"] == model and r["question"] == question), None)
+            if match:
+                if "error" in match:
+                    row[f"{question} Tempo"] = match["error"]
+                    row[f"{question} Risposta"] = ""
+                else:
+                    row[f"{question} Tempo"] = f"{match['time_sec']} sec"
+                    row[f"{question} Risposta"] = match['response'][:150] + "..." if len(match['response']) > 150 else match['response']
+            else:
+                row[f"{question} Tempo"] = "N/A"
+                row[f"{question} Risposta"] = "N/A"
+        summary_data.append(row)
 
-    plt.figure(figsize=(12, 6))
-    plt.suptitle(
-        f"Benchmark - {system_info['host']} ({system_info['cpu']})\nGPU: {system_info['gpu']}",
-        fontsize=14
-    )
-
-    # Tempo di risposta
-    plt.subplot(1, 3, 1)
-    bars1 = plt.bar(models, times)
-    plt.ylabel("Secondi")
-    plt.title("⏱ Tempo di Risposta")
-    for bar in bars1:
-        plt.text(bar.get_x() + bar.get_width() / 2, bar.get_height(), f"{bar.get_height():.2f}",
-                 ha='center', va='bottom', fontsize=8)
-
-    # Uso CPU
-    plt.subplot(1, 3, 2)
-    bars2 = plt.bar(models, cpu_after)
-    plt.ylabel("% CPU dopo")
-    plt.title("💻 Uso CPU")
-    for bar in bars2:
-        plt.text(bar.get_x() + bar.get_width() / 2, bar.get_height(), f"{bar.get_height():.1f}%",
-                 ha='center', va='bottom', fontsize=8)
-
-    # RAM usata
-    plt.subplot(1, 3, 3)
-    bars3 = plt.bar(models, ram_used)
-    plt.ylabel("RAM usata (GB)")
-    plt.title("🧠 RAM Utilizzata")
-    for bar in bars3:
-        plt.text(bar.get_x() + bar.get_width() / 2, bar.get_height(), f"{bar.get_height():.2f} GB",
-                 ha='center', va='bottom', fontsize=8)
-
-    plt.tight_layout(rect=[0, 0, 1, 0.93])
-    plt.savefig(PLOT_FILENAME)
-    print(f"\n🖼️ Grafico salvato come '{PLOT_FILENAME}'")
-    plt.show()
+    df = pd.DataFrame(summary_data)
+    df.to_excel(filename, index=False)
+    log_print(f"\n📊 Statistiche salvate in {filename}")
 
 if __name__ == "__main__":
-    print("📊 Avvio benchmark per modelli Ollama\n")
+    with open(LOG_FILENAME, "w", encoding="utf-8") as f:
+        f.write("=== BENCHMARK LOG ===\n\n")
+
+    log_print("📊 Avvio benchmark per modelli Ollama con domande singole\n")
 
     system_info = get_system_info()
-
-    print("🔍 INFO SISTEMA:")
+    log_print("🔍 INFO SISTEMA:")
     for k, v in system_info.items():
-        print(f"   {k}: {v}")
+        log_print(f"   {k}: {v}")
 
     models = get_installed_models()
     if not models:
-        print("❌ Nessun modello trovato. Usa 'ollama run <modello>' prima di eseguire il benchmark.")
+        log_print("❌ Nessun modello trovato. Usa 'ollama run <modello>' prima di eseguire il benchmark.")
         exit(1)
 
     all_results = []
     for model in models:
-        result = benchmark_model(model)
-        all_results.append(result)
+        log_print(f"\n🧪 Inizio test per il modello: {model}\n")
+        for convo in CONVERSATIONS:
+            history = []
+            for question in convo:
+                result, assistant_reply = ask_single_question(model, question, history)
+                all_results.append(result)
+                if assistant_reply:
+                    history.append({"role": "user", "content": question})
+                    history.append(assistant_reply)
+                else:
+                    continue
 
-    print("\n🧾 RISULTATI FINALI:")
+    log_print("\n🧾 RISULTATI COMPLETI:")
     for res in all_results:
         if "error" in res:
-            print(f"❌ {res['model']}: ERRORE → {res['error']}")
+            log_print(f"❌ {res['model']} | Domanda: {res['question']} → ERRORE: {res['error']}")
         else:
-            print(f"✅ {res['model']}: {res['time_sec']} sec, CPU {res['cpu_before']}%→{res['cpu_after']}%, "
-                  f"RAM {res['ram_before']}→{res['ram_after']} GB")
+            log_print(f"✅ {res['model']} | Domanda: {res['question']} | Tempo: {res['time_sec']} sec")
 
-    save_to_csv(all_results, system_info)
-    plot_results(all_results, system_info)
+    save_to_excel(all_results, system_info)
+    save_summary_to_excel(all_results)

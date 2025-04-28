@@ -17,3 +17,7 @@ langchain_ollama
 langchain
 langchain_community
 chromadb
+matplotlib
+psutil
+py-cpuinfo
+openpyxl

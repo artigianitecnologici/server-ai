@@ -1,0 +1,405 @@
+=== BENCHMARK LOG ===
+
+📊 Avvio benchmark per modelli Ollama con domande singole
+
+🔍 INFO SISTEMA:
+   host: security
+   cpu_brand: 11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz
+   cpu_type: i7-11800H
+   cpu_freq_base_mhz: 800.0
+   cpu_freq_max_mhz: 4600.0
+   cpu_freq_current_mhz: 3176.22
+   cores: 8
+   threads: 16
+   ram_total_gb: 31.12
+   os: Linux 6.8.0-58-generic
+   architecture: x86_64
+   gpu: NVIDIA GeForce RTX 3060 Laptop GPU
+
+🧪 Inizio test per il modello: gemma3:12b-it-qat
+
+➡️ Domanda: Ciao! Sai contare da uno a dieci?
+✅ gemma3:12b-it-qat | Tempo: 17.57 sec
+💬 Risposta: Ciao! Sì, certo che so contare! 😊
+
+Tu sai contare da uno a dieci? Prova a dirmi i numeri, così capisco quanto sei bravo! 😉
+...
+
+➡️ Domanda: Bravissimo! E qual è la capitale d'Italia?
+✅ gemma3:12b-it-qat | Tempo: 14.58 sec
+💬 Risposta: Evvai! Sei bravissimo a contare! 🎉
+
+La capitale d'Italia è Roma! È una città bellissima, piena di storia e con un monumento molto famoso: il Colosseo!...
+
+➡️ Domanda: Puoi spiegarmi cos'è una stella?
+⏱️ Timeout su: Puoi spiegarmi cos'è una stella?
+➡️ Domanda: Ciao! Cos'è il Sole?
+⏱️ Timeout su: Ciao! Cos'è il Sole?
+➡️ Domanda: Perché la luna ci segue?
+⏱️ Timeout su: Perché la luna ci segue?
+➡️ Domanda: Quanti pianeti ci sono?
+⏱️ Timeout su: Quanti pianeti ci sono?
+➡️ Domanda: Ciao! Perché il cielo è blu?
+⏱️ Timeout su: Ciao! Perché il cielo è blu?
+➡️ Domanda: Come nascono i pesci?
+⏱️ Timeout su: Come nascono i pesci?
+➡️ Domanda: Perché le foglie cadono?
+⏱️ Timeout su: Perché le foglie cadono?
+
+🧪 Inizio test per il modello: gemma:2b
+
+➡️ Domanda: Ciao! Sai contare da uno a dieci?
+✅ gemma:2b | Tempo: 8.09 sec
+💬 Risposta: Ciao! Sono qui per aiutarti a contare. Canta con me un numero da 1 a 10....
+
+➡️ Domanda: Bravissimo! E qual è la capitale d'Italia?
+✅ gemma:2b | Tempo: 0.12 sec
+💬 Risposta: La capitale d'Italia è Roma....
+
+➡️ Domanda: Puoi spiegarmi cos'è una stella?
+✅ gemma:2b | Tempo: 0.17 sec
+💬 Risposta: Una stella è un corpo celeste molto caldo che brilla da lontano....
+
+➡️ Domanda: Ciao! Cos'è il Sole?
+✅ gemma:2b | Tempo: 0.31 sec
+💬 Risposta: Il Sole è un grande fiore che vive a rido sul cielo. Quando il Sole è alto, può essere visto come una grande stella....
+
+➡️ Domanda: Perché la luna ci segue?
+✅ gemma:2b | Tempo: 0.3 sec
+💬 Risposta: Quando il Sole è più alto, la Luna è più grande e il suo potere elettromagnetico può essere visto da noi sulla Terra....
+
+➡️ Domanda: Quanti pianeti ci sono?
+✅ gemma:2b | Tempo: 0.33 sec
+💬 Risposta: Il Sole ha 8 pianeti principali: Luna, Mercurio, Marte, Venere, Giove, Saturno, Urano e Nettuno....
+
+➡️ Domanda: Ciao! Perché il cielo è blu?
+✅ gemma:2b | Tempo: 0.57 sec
+💬 Risposta: Il cielo è blu perché è fatto di aria. L'aria è un materiale chiaro e traspiscatore di luce, quindi quando la luce solare si inserisce nell'aria, si r...
+
+➡️ Domanda: Come nascono i pesci?
+✅ gemma:2b | Tempo: 0.44 sec
+💬 Risposta: I pesci sono creature marine che vivono nel mare. I pesci sono in grado di fare questo perché hanno un sistema nervoso e un sistema respiratori che ai...
+
+➡️ Domanda: Perché le foglie cadono?
+✅ gemma:2b | Tempo: 0.23 sec
+💬 Risposta: I foglie cadono perché sono vecchie e non sono più in grado di essere alimentate....
+
+
+🧪 Inizio test per il modello: llama3:latest
+
+➡️ Domanda: Ciao! Sai contare da uno a dieci?
+✅ llama3:latest | Tempo: 5.91 sec
+💬 Risposta: Sì! Io posso contare!
+
+Uno, due, tre, quattro, cinque, sei, sette, otto, nove, dieci! Come ti chiami?...
+
+➡️ Domanda: Bravissimo! E qual è la capitale d'Italia?
+✅ llama3:latest | Tempo: 2.22 sec
+💬 Risposta: Oh, oh! La capitale dell'Italia è Roma!
+
+Sì, Roma! È una città molto bella e storica. Ci sono molte cose da vedere là, come il Colosseo e il Pantheon....
+
+➡️ Domanda: Puoi spiegarmi cos'è una stella?
+✅ llama3:latest | Tempo: 5.44 sec
+💬 Risposta: Sì!
+
+Le stelle sono piccole luci che si possono vedere nel cielo notturno. Sono così belle e brillanti!
+
+Le stelle sono come immense città in cielo, m...
+
+➡️ Domanda: Ciao! Cos'è il Sole?
+✅ llama3:latest | Tempo: 7.44 sec
+💬 Risposta: Ciao! Oh, il Sole è proprio speciale! È una stella enorme che splende nel cielo e fa caldo sulla Terra.
+
+Imagina di essere in un giardino con i tuoi a...
+
+➡️ Domanda: Perché la luna ci segue?
+✅ llama3:latest | Tempo: 8.7 sec
+💬 Risposta: Oh, la Luna è proprio strana!
+
+La Luna è come il fratello minore del Sole. Ecco perché la segue.
+
+La Luna è attaccata alla Terra con una specie di cor...
+
+➡️ Domanda: Quanti pianeti ci sono?
+✅ llama3:latest | Tempo: 8.19 sec
+💬 Risposta: Oh, ci sono molti pianeti nel sistema solare!
+
+Il Sole ha otto pianeti che gli orbitano intorno. Ecco come li chiamiamo:
+
+1. Mercurio
+2. Venere
+3. Ter...
+
+➡️ Domanda: Ciao! Perché il cielo è blu?
+✅ llama3:latest | Tempo: 10.03 sec
+💬 Risposta: Ciao! È una domanda fantastica!
+
+Il cielo è blu perché la luce del sole che entra nella nostra atmosfera si comporta in modo speciale.
+
+La luce del so...
+
+➡️ Domanda: Come nascono i pesci?
+✅ llama3:latest | Tempo: 10.52 sec
+💬 Risposta: Che bella domanda!
+
+I pesci nascono in acqua, dentro una sostanza chiamata "uovo". Gli uova sono come piccoli pacchetti che contengono il futuro pesce...
+
+➡️ Domanda: Perché le foglie cadono?
+✅ llama3:latest | Tempo: 10.72 sec
+💬 Risposta: Altro bell'interrogativo!
+
+Le foglie cadono per una ragione molto naturale: la stagione!
+
+In estate, le piante producono energia attraverso la fotosin...
+
+
+🧪 Inizio test per il modello: llama2-uncensored:7b-chat-q4_0
+
+➡️ Domanda: Ciao! Sai contare da uno a dieci?
+✅ llama2-uncensored:7b-chat-q4_0 | Tempo: 4.09 sec
+💬 Risposta: Si, posso contare da uno a dieci....
+
+➡️ Domanda: Bravissimo! E qual è la capitale d'Italia?
+✅ llama2-uncensored:7b-chat-q4_0 | Tempo: 0.28 sec
+💬 Risposta: Roma è la capitale d'Italia....
+
+➡️ Domanda: Puoi spiegarmi cos'è una stella?
+✅ llama2-uncensored:7b-chat-q4_0 | Tempo: 0.82 sec
+💬 Risposta: Un astro in cielo, che può essere molto brillante o abbastanza debole, a seconda della sua distanza dal Sole....
+
+➡️ Domanda: Ciao! Cos'è il Sole?
+✅ llama2-uncensored:7b-chat-q4_0 | Tempo: 1.25 sec
+💬 Risposta: The Sun is the star at the center of our solar system that provides light and heat to Earth. It has a diameter of approximately 864,000 miles and is a...
+
+➡️ Domanda: Perché la luna ci segue?
+✅ llama2-uncensored:7b-chat-q4_0 | Tempo: 1.61 sec
+💬 Risposta: The moon follows an elliptical orbit around Earth because it's not actually a perfect sphere, but instead has a very small amount of mass on the far s...
+
+➡️ Domanda: Quanti pianeti ci sono?
+✅ llama2-uncensored:7b-chat-q4_0 | Tempo: 1.78 sec
+💬 Risposta: There are eight planets in our solar system (including Pluto), although some scientists dispute this classification due to Pluto's small size and dist...
+
+➡️ Domanda: Ciao! Perché il cielo è blu?
+✅ llama2-uncensored:7b-chat-q4_0 | Tempo: 2.88 sec
+💬 Risposta: Il cielo è blu perché le particelle di aria che formano la coltre atmosferica sono tinte con colori rossi, gialli e verdi. Quando l'energia solare rag...
+
+➡️ Domanda: Come nascono i pesci?
+✅ llama2-uncensored:7b-chat-q4_0 | Tempo: 2.22 sec
+💬 Risposta: I pesci nascono dall'unione degli spermatozoi maschili con gli ovuli femminili in acqua, dopo una fase di sviluppo che può durare da alcuni giorni a m...
+
+➡️ Domanda: Perché le foglie cadono?
+✅ llama2-uncensored:7b-chat-q4_0 | Tempo: 8.45 sec
+💬 Risposta: Le foglie cadono a causa di una serie di processi naturali che avvengono durante il corso dell'anno. In primavera, quando la temperatura aumenta e l'u...
+
+
+🧪 Inizio test per il modello: llama3.1:8b
+
+➡️ Domanda: Ciao! Sai contare da uno a dieci?
+✅ llama3.1:8b | Tempo: 5.51 sec
+💬 Risposta: Sì! Conto così:
+
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10!
+
+Come ti chiami?...
+
+➡️ Domanda: Bravissimo! E qual è la capitale d'Italia?
+✅ llama3.1:8b | Tempo: 1.62 sec
+💬 Risposta: La capitale dell'Italia si chiama Roma! Ci sono anche il Colosseo e il Pantheon a Roma! Sai che i gladiatori combattevano al Colosseo?...
+
+➡️ Domanda: Puoi spiegarmi cos'è una stella?
+✅ llama3.1:8b | Tempo: 3.48 sec
+💬 Risposta: Le stelle sono piccole luci nel cielo notturno. Sono così lontane da noi che non possiamo toccarle! La luna è anche una stella, ma un po' più vicina d...
+
+➡️ Domanda: Ciao! Cos'è il Sole?
+✅ llama3.1:8b | Tempo: 1.54 sec
+💬 Risposta: Ehi! Il Sole è una grande sfera rossa che brilla in cielo, il più grande della nostra galassia! È come un gigante di fuoco!...
+
+➡️ Domanda: Perché la luna ci segue?
+✅ llama3.1:8b | Tempo: 2.64 sec
+💬 Risposta: La Luna segue il Sole! Ma non è solo lontana da noi, a volte si ferma davanti alla Terra e noi la vediamo piena. Quella che chiamiamo "piena luna". Ec...
+
+➡️ Domanda: Quanti pianeti ci sono?
+✅ llama3.1:8b | Tempo: 2.66 sec
+💬 Risposta: Ci sono otto pianeti principali intorno al nostro Sole! Ma sai che cosa ancora più interessante? Altri astronomi, i nostri amici dello spazio, hanno s...
+
+➡️ Domanda: Ciao! Perché il cielo è blu?
+✅ llama3.1:8b | Tempo: 5.51 sec
+💬 Risposta: Ehi! Il cielo sembra sempre blu, vero?
+
+Il motivo per cui il cielo sembra blu è che la luce del sole si riflette nell'atmosfera della Terra. E quando ...
+
+➡️ Domanda: Come nascono i pesci?
+✅ llama3.1:8b | Tempo: 8.41 sec
+💬 Risposta: I pesci! Sono così divertenti!
+
+I pesci sono animali che vivono nell'acqua, ma come nascono?
+
+Ecco, esistono due modi per cui i pesci nascono:
+
+1. **G...
+
+➡️ Domanda: Perché le foglie cadono?
+✅ llama3.1:8b | Tempo: 8.12 sec
+💬 Risposta: Le foglie! Sono così belle, ma poi... Cadono!
+
+Il motivo per cui le foglie cadono è che sono leggere e non hanno più l'acqua all'interno, come quando ...
+
+
+🧪 Inizio test per il modello: qwen2.5-coder:1.5b-base
+
+➡️ Domanda: Ciao! Sai contare da uno a dieci?
+✅ qwen2.5-coder:1.5b-base | Tempo: 4.86 sec
+💬 Risposta:  Perché tu non ti sei messo a parlare della tua vita di matricola?
+Non ho capito perché hai deciso di fare la scrittura.
+Ti faccio sapere che le perso...
+
+➡️ Domanda: Bravissimo! E qual è la capitale d'Italia?
+✅ qwen2.5-coder:1.5b-base | Tempo: 5.26 sec
+💬 Risposta:  Perché non si può spiegare?
+Ciao! Il giorno del 28 ti ha fatto rivedere la voce, ma anche il resto. Cosa potrebbe essere successo se tu avessi deciso...
+
+➡️ Domanda: Puoi spiegarmi cos'è una stella?
+✅ qwen2.5-coder:1.5b-base | Tempo: 19.49 sec
+💬 Risposta:  Perché tu hai deciso di farti vedere in una stella?
+Sono riuscito ad arrivare a controllare da uno a dieci, ma è un pò di fastidio! C'è questa gente ...
+
+➡️ Domanda: Ciao! Cos'è il Sole?
+⏱️ Timeout su: Ciao! Cos'è il Sole?
+➡️ Domanda: Perché la luna ci segue?
+✅ qwen2.5-coder:1.5b-base | Tempo: 4.87 sec
+💬 Risposta:  Perché la luna si fa così, per chi non capire questo perché della luna e il sole in un sistema solare, può anche farsi che le stelle siano in orbita ...
+
+➡️ Domanda: Quanti pianeti ci sono?
+✅ qwen2.5-coder:1.5b-base | Tempo: 2.56 sec
+💬 Risposta:  E se c'è più di uno?
+Una domanda interessante!
+Certo! Il numero di pianeti nei sistemi solari può essere variabile. Gli astronomi hanno studiato i si...
+
+➡️ Domanda: Ciao! Perché il cielo è blu?
+✅ qwen2.5-coder:1.5b-base | Tempo: 6.81 sec
+💬 Risposta:  | Sogno e pensare
+Post navigation Cosa farà un uomo che la gente ama? > »
+Avvio del giornale: Il 28 marzo, ieri sera, la prima esibizione di un nuovo...
+
+➡️ Domanda: Come nascono i pesci?
+⏱️ Timeout su: Come nascono i pesci?
+➡️ Domanda: Perché le foglie cadono?
+⏱️ Timeout su: Perché le foglie cadono?
+
+🧪 Inizio test per il modello: codellama:7b
+
+➡️ Domanda: Ciao! Sai contare da uno a dieci?
+✅ codellama:7b | Tempo: 5.47 sec
+💬 Risposta: 
+Certo! Contando da uno a dieci sono: uno, due, tre, quattro, cinque, sei, sette, otto, nove, dieci....
+
+➡️ Domanda: Bravissimo! E qual è la capitale d'Italia?
+✅ codellama:7b | Tempo: 0.2 sec
+💬 Risposta: 
+La capitale d'Italia è Roma....
+
+➡️ Domanda: Puoi spiegarmi cos'è una stella?
+✅ codellama:7b | Tempo: 2.37 sec
+💬 Risposta: 
+Una stella è un grande corpo celeste che ruota attorno al centro di un sistema solare. È composta principalmente da idrogeno e carbonio, due elementi...
+
+➡️ Domanda: Ciao! Cos'è il Sole?
+✅ codellama:7b | Tempo: 2.55 sec
+💬 Risposta: 
+Ciao! Il Sole è una stella enorme e calda che si trova al centro del nostro sistema solare. È il luogo in cui vivono tu e io, e fornisce la luce che ...
+
+➡️ Domanda: Perché la luna ci segue?
+✅ codellama:7b | Tempo: 15.88 sec
+💬 Risposta: 
+La luna ci segue perché la sua gravità attrae le nostre orbite terrestri. La nostra luna è molto grande e ha una gran quantità di materiale, quindi l...
+
+➡️ Domanda: Quanti pianeti ci sono?
+✅ codellama:7b | Tempo: 1.67 sec
+💬 Risposta: 
+Ci sono otto pianeti visibili nel nostro sistema solare. I pianeti sono: Mercurio, Venere, Terra, Marte, Giove, Saturno, Urano e Nettuno. Ci sono anc...
+
+➡️ Domanda: Ciao! Perché il cielo è blu?
+✅ codellama:7b | Tempo: 2.86 sec
+💬 Risposta: 
+Ciao! Il cielo è blu perché quando la luce del sole incide sulla Terra, la luce si scatterizza (si riflette) sui piccoli cristalli d'acqua presenti n...
+
+➡️ Domanda: Come nascono i pesci?
+✅ codellama:7b | Tempo: 5.04 sec
+💬 Risposta: 
+I pesci nascono dalla fecondazione di una uova che la madre depone in acqua. Questa è una delle maniere in cui gli animali producono nuove generazion...
+
+➡️ Domanda: Perché le foglie cadono?
+✅ codellama:7b | Tempo: 4.22 sec
+💬 Risposta: 
+Le foglie dei piante vengono raccolte dalle piume delle gazzelle, i cani e altri animali che vivono in una zona specifica. Le piume sono leggere e fl...
+
+
+🧾 RISULTATI COMPLETI:
+✅ gemma3:12b-it-qat | Domanda: Ciao! Sai contare da uno a dieci? | Tempo: 17.57 sec
+✅ gemma3:12b-it-qat | Domanda: Bravissimo! E qual è la capitale d'Italia? | Tempo: 14.58 sec
+❌ gemma3:12b-it-qat | Domanda: Puoi spiegarmi cos'è una stella? → ERRORE: Timeout dopo 30 secondi
+❌ gemma3:12b-it-qat | Domanda: Ciao! Cos'è il Sole? → ERRORE: Timeout dopo 30 secondi
+❌ gemma3:12b-it-qat | Domanda: Perché la luna ci segue? → ERRORE: Timeout dopo 30 secondi
+❌ gemma3:12b-it-qat | Domanda: Quanti pianeti ci sono? → ERRORE: Timeout dopo 30 secondi
+❌ gemma3:12b-it-qat | Domanda: Ciao! Perché il cielo è blu? → ERRORE: Timeout dopo 30 secondi
+❌ gemma3:12b-it-qat | Domanda: Come nascono i pesci? → ERRORE: Timeout dopo 30 secondi
+❌ gemma3:12b-it-qat | Domanda: Perché le foglie cadono? → ERRORE: Timeout dopo 30 secondi
+✅ gemma:2b | Domanda: Ciao! Sai contare da uno a dieci? | Tempo: 8.09 sec
+✅ gemma:2b | Domanda: Bravissimo! E qual è la capitale d'Italia? | Tempo: 0.12 sec
+✅ gemma:2b | Domanda: Puoi spiegarmi cos'è una stella? | Tempo: 0.17 sec
+✅ gemma:2b | Domanda: Ciao! Cos'è il Sole? | Tempo: 0.31 sec
+✅ gemma:2b | Domanda: Perché la luna ci segue? | Tempo: 0.3 sec
+✅ gemma:2b | Domanda: Quanti pianeti ci sono? | Tempo: 0.33 sec
+✅ gemma:2b | Domanda: Ciao! Perché il cielo è blu? | Tempo: 0.57 sec
+✅ gemma:2b | Domanda: Come nascono i pesci? | Tempo: 0.44 sec
+✅ gemma:2b | Domanda: Perché le foglie cadono? | Tempo: 0.23 sec
+✅ llama3:latest | Domanda: Ciao! Sai contare da uno a dieci? | Tempo: 5.91 sec
+✅ llama3:latest | Domanda: Bravissimo! E qual è la capitale d'Italia? | Tempo: 2.22 sec
+✅ llama3:latest | Domanda: Puoi spiegarmi cos'è una stella? | Tempo: 5.44 sec
+✅ llama3:latest | Domanda: Ciao! Cos'è il Sole? | Tempo: 7.44 sec
+✅ llama3:latest | Domanda: Perché la luna ci segue? | Tempo: 8.7 sec
+✅ llama3:latest | Domanda: Quanti pianeti ci sono? | Tempo: 8.19 sec
+✅ llama3:latest | Domanda: Ciao! Perché il cielo è blu? | Tempo: 10.03 sec
+✅ llama3:latest | Domanda: Come nascono i pesci? | Tempo: 10.52 sec
+✅ llama3:latest | Domanda: Perché le foglie cadono? | Tempo: 10.72 sec
+✅ llama2-uncensored:7b-chat-q4_0 | Domanda: Ciao! Sai contare da uno a dieci? | Tempo: 4.09 sec
+✅ llama2-uncensored:7b-chat-q4_0 | Domanda: Bravissimo! E qual è la capitale d'Italia? | Tempo: 0.28 sec
+✅ llama2-uncensored:7b-chat-q4_0 | Domanda: Puoi spiegarmi cos'è una stella? | Tempo: 0.82 sec
+✅ llama2-uncensored:7b-chat-q4_0 | Domanda: Ciao! Cos'è il Sole? | Tempo: 1.25 sec
+✅ llama2-uncensored:7b-chat-q4_0 | Domanda: Perché la luna ci segue? | Tempo: 1.61 sec
+✅ llama2-uncensored:7b-chat-q4_0 | Domanda: Quanti pianeti ci sono? | Tempo: 1.78 sec
+✅ llama2-uncensored:7b-chat-q4_0 | Domanda: Ciao! Perché il cielo è blu? | Tempo: 2.88 sec
+✅ llama2-uncensored:7b-chat-q4_0 | Domanda: Come nascono i pesci? | Tempo: 2.22 sec
+✅ llama2-uncensored:7b-chat-q4_0 | Domanda: Perché le foglie cadono? | Tempo: 8.45 sec
+✅ llama3.1:8b | Domanda: Ciao! Sai contare da uno a dieci? | Tempo: 5.51 sec
+✅ llama3.1:8b | Domanda: Bravissimo! E qual è la capitale d'Italia? | Tempo: 1.62 sec
+✅ llama3.1:8b | Domanda: Puoi spiegarmi cos'è una stella? | Tempo: 3.48 sec
+✅ llama3.1:8b | Domanda: Ciao! Cos'è il Sole? | Tempo: 1.54 sec
+✅ llama3.1:8b | Domanda: Perché la luna ci segue? | Tempo: 2.64 sec
+✅ llama3.1:8b | Domanda: Quanti pianeti ci sono? | Tempo: 2.66 sec
+✅ llama3.1:8b | Domanda: Ciao! Perché il cielo è blu? | Tempo: 5.51 sec
+✅ llama3.1:8b | Domanda: Come nascono i pesci? | Tempo: 8.41 sec
+✅ llama3.1:8b | Domanda: Perché le foglie cadono? | Tempo: 8.12 sec
+✅ qwen2.5-coder:1.5b-base | Domanda: Ciao! Sai contare da uno a dieci? | Tempo: 4.86 sec
+✅ qwen2.5-coder:1.5b-base | Domanda: Bravissimo! E qual è la capitale d'Italia? | Tempo: 5.26 sec
+✅ qwen2.5-coder:1.5b-base | Domanda: Puoi spiegarmi cos'è una stella? | Tempo: 19.49 sec
+❌ qwen2.5-coder:1.5b-base | Domanda: Ciao! Cos'è il Sole? → ERRORE: Timeout dopo 30 secondi
+✅ qwen2.5-coder:1.5b-base | Domanda: Perché la luna ci segue? | Tempo: 4.87 sec
+✅ qwen2.5-coder:1.5b-base | Domanda: Quanti pianeti ci sono? | Tempo: 2.56 sec
+✅ qwen2.5-coder:1.5b-base | Domanda: Ciao! Perché il cielo è blu? | Tempo: 6.81 sec
+❌ qwen2.5-coder:1.5b-base | Domanda: Come nascono i pesci? → ERRORE: Timeout dopo 30 secondi
+❌ qwen2.5-coder:1.5b-base | Domanda: Perché le foglie cadono? → ERRORE: Timeout dopo 30 secondi
+✅ codellama:7b | Domanda: Ciao! Sai contare da uno a dieci? | Tempo: 5.47 sec
+✅ codellama:7b | Domanda: Bravissimo! E qual è la capitale d'Italia? | Tempo: 0.2 sec
+✅ codellama:7b | Domanda: Puoi spiegarmi cos'è una stella? | Tempo: 2.37 sec
+✅ codellama:7b | Domanda: Ciao! Cos'è il Sole? | Tempo: 2.55 sec
+✅ codellama:7b | Domanda: Perché la luna ci segue? | Tempo: 15.88 sec
+✅ codellama:7b | Domanda: Quanti pianeti ci sono? | Tempo: 1.67 sec
+✅ codellama:7b | Domanda: Ciao! Perché il cielo è blu? | Tempo: 2.86 sec
+✅ codellama:7b | Domanda: Come nascono i pesci? | Tempo: 5.04 sec
+✅ codellama:7b | Domanda: Perché le foglie cadono? | Tempo: 4.22 sec
+
+📁 Risultati salvati in benchmark_results.xlsx
+
+📊 Statistiche dettagliate salvate in benchmark_summary.xlsx

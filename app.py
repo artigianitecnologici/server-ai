@@ -13,7 +13,7 @@ from ollama import Client
 import requests
 
 # Load config from JSON
-DEFAULT_CONFIG_PATH = os.path.expandvars("$HOME/server-ai/")
+DEFAULT_CONFIG_PATH = os.path.expandvars("$HOME/github/server-ai/")
 config_file = os.path.join(DEFAULT_CONFIG_PATH, "config.json")
 
 if os.path.exists(config_file):
@@ -22,11 +22,11 @@ if os.path.exists(config_file):
 else:
     raise FileNotFoundError(f"Configuration file not found at {config_file}")
 
-PATH = os.path.expandvars(config.get("main_path", "$HOME/server-ai/"))
+PATH = os.path.expandvars(config.get("main_path", "$HOME/github/server-ai/"))
 LOG_PATH = os.path.join(PATH, "log")
 os.makedirs(LOG_PATH, exist_ok=True)
 
-CURRENT_MODEL = config.get("default_model", "gemma:2b")
+CURRENT_MODEL = config.get("default_model", "llama3:latest")
 PROMPT_SYSTEM = config.get("prompt_system", "Rispondi sempre in italiano. Ti chiami MARRtino.")
 
 # Load FAQ dataset
@@ -72,8 +72,10 @@ def get_response(messages: list, model_name):
         start_time = time()
         response = ollama_client.chat(
             model=model_name,
-            messages=messages
+            messages=messages,
+            options={"num_predict": 100, "temperature": 0.7}
         )
+
         elapsed_time = time() - start_time
         print(f"[DEBUG] Full model response: {response}", file=sys.stderr)
         print(f"[DEBUG] Model response time: {elapsed_time:.2f} seconds", file=sys.stderr)
@@ -98,7 +100,7 @@ def get_ollama_models():
         print(f"[DEBUG] Errore nel recupero modelli Ollama: {e}", file=sys.stderr)
         return ["llama3:latest"]
 
-def send_to_ros2(text, url="http://192.168.1.6:5001/send"):
+def send_to_ros2(text, url="http://192.168.1.19:5001/send"):
     try:
         params = {"text": text}
         requests.get(url, params=params)

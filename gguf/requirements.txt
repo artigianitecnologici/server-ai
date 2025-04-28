@@ -1,0 +1,9 @@
+torch==2.1.2+cu121
+transformers
+datasets
+accelerate
+peft
+sentencepiece
+bitsandbytes
+PyMuPDF
+unsloth @ git+https://github.com/unslothai/unsloth.git
